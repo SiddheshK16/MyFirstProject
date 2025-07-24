@@ -78,7 +78,7 @@
       text-shadow: 1px 1px 2px #d63384;
     }
 
-    #revealBtn {
+    .revealBtncls {
       background: linear-gradient(45deg, #ff6ec4, #7873f5);
       color: #fff;
       border: none;
@@ -183,20 +183,22 @@
 <body>
   <div class="heart animate__animated animate__bounceInDown">💕</div>
   <div class="typewriter">Loading love packets...</div>
-  <button id="revealBtn">Tap for a Surprise 🏰</button>
+  <button id="revealBtn" class="revealBtncls">Tap for a Surprise 🏰</button>
 
   <div id="message">
-    <img id="photo" src="https://siddheshk16.github.io/SurpriseForYouDipali.github.io/IMG_20240714_145938.jpg" alt="Her Photo" />
-    <h2>Happy Birthday, Dipali! 🎈</h2>
+    <img id="photo" src="../New folder/images/IMG_20240714_145938.jpg" alt="Her Photo" />
+    <h2>🎈 Happy Birthday, Dipali! 🎈</h2>
     <p>
-      You are not just a part of my life code, you ARE the code.<br>
+      ❤️ You are not just a part of my life code, you ARE the code.<br>
       From the first compile to infinite loops of love — I’m yours forever.<br>
       <strong>I love you more than all my Git commits combined! ❤️</strong>
     </p>
+    <br/>
+    <button id="revealBtn1" class="revealBtncls">🏰 Tap here for more surprises 🏰</button>
   </div>
 
   <div id="videoContainer">
-    <iframe src="https://siddheshk16.github.io/SurpriseForYouDipali.github.io/VN20250214_003245.mp4" allowfullscreen></iframe>
+    <iframe src="../New folder/images/VN20250214_003245.mp4" allowfullscreen></iframe>
   </div>
 
   <audio autoplay loop>
@@ -236,9 +238,17 @@
     const btn = document.getElementById("revealBtn");
     const msg = document.getElementById("message");
     const video = document.getElementById("videoContainer");
+    const btn1 = document.getElementById("revealBtn1");
 
     btn.addEventListener("click", () => {
       msg.style.display = "block";
+      video.style.display = "none";
+      btn.style.display = "none";
+      launchConfetti();
+    });
+
+    btn1.addEventListener("click", () => {
+      msg.style.display = "none";
       video.style.display = "block";
       btn.style.display = "none";
       launchConfetti();
