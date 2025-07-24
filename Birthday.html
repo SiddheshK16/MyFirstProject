@@ -14,6 +14,11 @@
   <!-- Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
+  <!-- Slick Carousel -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
   <style>
     body {
       margin: 0;
@@ -178,6 +183,13 @@
         opacity: 0;
       }
     }
+
+    .image-slider img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
   </style>
 </head>
 <body>
@@ -186,7 +198,7 @@
   <button id="revealBtn" class="revealBtncls">Tap for a Surprise 🏰</button>
 
   <div id="message">
-    <img id="photo" src="https://siddheshk16.github.io/SurpriseForYouDipali.github.io/IMG_20240714_145938.jpg" alt="Her Photo" />
+    <img id="photo" src="../New folder/images/IMG_20240714_145938.jpg" alt="Her Photo" />
     <h2>🎈 Happy Birthday, Dipali! 🎈</h2>
     <p>
       ❤️ You are not just a part of my life code, you ARE the code.<br>
@@ -197,9 +209,17 @@
     <button id="revealBtn1" class="revealBtncls">🏰 Tap here for more surprises 🏰</button>
   </div>
 
-  <div id="videoContainer">
-    <iframe src="https://siddheshk16.github.io/SurpriseForYouDipali.github.io/VN20250214_003245.mp4" allowfullscreen></iframe>
-  </div>
+
+<div id="videoContainer">
+  <iframe src="../New folder/images/VN20250214_003245.mp4" allowfullscreen></iframe>
+  <br/>
+  <button id="revealBtn2" class="revealBtncls">🏰 Tap here for our journey 🏰</button>
+</div>
+
+<div id="videoContainer1" style="display: none;">
+  <iframe src="../New folder/images/VN20250214_003245.mp4" allowfullscreen></iframe>
+  <br/>
+</div>
 
   <audio autoplay loop>
     <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
@@ -239,11 +259,15 @@
     const msg = document.getElementById("message");
     const video = document.getElementById("videoContainer");
     const btn1 = document.getElementById("revealBtn1");
+    const btn2 = document.getElementById("revealBtn2");
+    const video1 = document.getElementById("videoContainer1");
+    
 
     btn.addEventListener("click", () => {
       msg.style.display = "block";
       video.style.display = "none";
       btn.style.display = "none";
+      video1.style.display="none";
       launchConfetti();
     });
 
@@ -251,8 +275,21 @@
       msg.style.display = "none";
       video.style.display = "block";
       btn.style.display = "none";
+      video1.style.display="none";
+      btn2.style.display="block";
       launchConfetti();
     });
+
+    btn2.addEventListener("click", () => {
+      msg.style.display = "none";
+      video.style.display = "none";
+      btn.style.display = "none";
+      video1.style.display="block";
+      btn2.style.display="none";
+      launchConfetti();
+    });
+
+    
   </script>
 </body>
 </html>
