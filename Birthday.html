@@ -18,7 +18,7 @@
     body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      height: 100vh;
       font-family: 'Roboto', sans-serif;
       background: linear-gradient(to top right, #fff0f5, #ffb6c1);
       overflow: hidden;
@@ -33,7 +33,7 @@
     .heart {
       font-size: 5em;
       animation: beat 1s infinite;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       color: #ff69b4;
     }
 
@@ -42,20 +42,33 @@
       50% { transform: scale(1.3); }
     }
 
-    h1, h2 {
+    .typewriter {
       font-family: 'Great Vibes', cursive;
+      font-size: 3em;
       color: #fff;
       text-shadow: 2px 2px 4px #ff69b4;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid #fff;
+      width: 0;
+      animation: typing 4s steps(40, end) forwards, blink 0.7s infinite;
     }
 
-    h1 {
-      font-size: 3em;
-      margin: 10px 0;
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
     }
 
     h2 {
-      font-size: 2.5em;
+      font-family: 'Great Vibes', cursive;
+      color: #fff;
+      font-size: 2.8em;
       margin-top: 20px;
+      text-shadow: 2px 2px 4px #ff6969;
     }
 
     p {
@@ -74,13 +87,16 @@
       border-radius: 30px;
       margin-top: 25px;
       cursor: pointer;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
+      animation: glow 1.5s infinite alternate;
     }
 
-    #revealBtn:hover {
-      transform: scale(1.05);
-      background: linear-gradient(45deg, #ff8ec4, #9893f5);
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px #ff6ec4, 0 0 20px #7873f5;
+      }
+      to {
+        box-shadow: 0 0 20px #ff8ec4, 0 0 30px #9893f5;
+      }
     }
 
     #message, #videoContainer {
@@ -101,6 +117,12 @@
       margin: 20px 0;
       border: 4px solid #fff;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      animation: zoomIn 1s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     iframe {
@@ -116,6 +138,7 @@
       font-size: 2em;
       color: #ff69b4;
       animation: floatUp 6s infinite ease-in-out;
+      pointer-events: none;
     }
 
     @keyframes floatUp {
@@ -138,14 +161,31 @@
     audio {
       display: none;
     }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #f7c6ff;
+      top: 0;
+      animation: confettiFall 4s linear forwards;
+    }
+
+    @keyframes confettiFall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="heart animate__animated animate__bounceInDown">💕</div>
-  <h1 class="animate__animated animate__fadeInDown">Loading love packets...</h1>
-  <button id="revealBtn" class="animate__animated animate__pulse animate__infinite">Tap for a Surprise 🏰</button>
+  <div class="typewriter">Loading love packets...</div>
+  <button id="revealBtn">Tap for a Surprise 🏰</button>
 
-  <div id="message" class="animate__animated animate__fadeInUp">
+  <div id="message">
     <img id="photo" src="../New folder/images/IMG_20240714_145938.jpg" alt="Her Photo" />
     <h2>Happy Birthday, Dipali! 🎈</h2>
     <p>
@@ -155,15 +195,15 @@
     </p>
   </div>
 
-  <div id="videoContainer" class="animate__animated animate__fadeInUp">
-    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1" allowfullscreen></iframe>
+  <div id="videoContainer">
+    <iframe src="../New folder/images/VN20250214_003245.mp4" allowfullscreen></iframe>
   </div>
 
   <audio autoplay loop>
     <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Floating hearts -->
+  <!-- Floating Hearts -->
   <script>
     function createHeart() {
       const heart = document.createElement('div');
@@ -177,6 +217,20 @@
     setInterval(createHeart, 800);
   </script>
 
+  <!-- Confetti Generator -->
+  <script>
+    function launchConfetti() {
+      for (let i = 0; i < 80; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`;
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 4000);
+      }
+    }
+  </script>
+
   <!-- Reveal Message Logic -->
   <script>
     const btn = document.getElementById("revealBtn");
@@ -187,6 +241,7 @@
       msg.style.display = "block";
       video.style.display = "block";
       btn.style.display = "none";
+      launchConfetti();
     });
   </script>
 </body>
