@@ -36,7 +36,7 @@
     }
 
     .heart {
-      font-size: 5em;
+      font-size: 3em;
       animation: beat 1s infinite;
       margin-bottom: 10px;
       color: #ff69b4;
@@ -49,7 +49,7 @@
 
     .typewriter {
       font-family: 'Great Vibes', cursive;
-      font-size: 3em;
+      font-size: 2em;
       color: #fff;
       text-shadow: 2px 2px 4px #ff69b4;
       overflow: hidden;
@@ -71,16 +71,16 @@
     h2 {
       font-family: 'Great Vibes', cursive;
       color: #fff;
-      font-size: 2.8em;
+      font-size: 2.0em;
       margin-top: 20px;
       text-shadow: 2px 2px 4px #ff6969;
     }
 
     p {
-      font-size: 1.2em;
+      font-size: 1.0em;
       margin: 15px;
       color: #fff;
-      text-shadow: 1px 1px 2px #d63384;
+      text-shadow: 1px 1px 2px #d63333;
     }
 
     .revealBtncls {
@@ -201,11 +201,10 @@
     <img id="photo" src="https://siddheshk16.github.io/SurpriseForYouDipali.github.io/IMG_20240714_145938.jpg" alt="Her Photo" />
     <h2>🎈 Happy Birthday, Dipali! 🎈</h2>
     <p>
-      ❤️ You are not just a part of my life code, you ARE the code.<br>
-      From the first compile to infinite loops of love — I’m yours forever.<br>
-      <strong>I love you more than all my Git commits combined! ❤️</strong>
+      ❤️You are not just a part of my life code, you ARE the code.<br>
+      From the first compile to infinite loops of love - I'm yours forever.<br>
+      <strong>I love you more than all my Git commits combined!❤️</strong>
     </p>
-    <br/>
     <button id="revealBtn1" class="revealBtncls">🏰 Tap here for more surprises 🏰</button>
   </div>
 
@@ -218,7 +217,7 @@
 
 <button id="revealBtn2" class="revealBtncls" style="display: none;">🏰 Tap here for our journey 🏰</button>
 <video id="videoContainer" controls playsinline style="width:90%; max-width:360px; aspect-ratio:3/4; border-radius:15px; box-shadow:0 4px 5px rgba(0,0,0,0.3);">
-  <source src="https://siddheshk16.github.io/SurpriseForYouDipali.github.io/VN20250214_003245.mp4" type="video/mp4">
+  <source src="https://siddheshk16.github.io/SurpriseForYouDipali.github.io/VN20250214_003245.mp4" type="video/mp4" >
 </video>
 
 
@@ -226,7 +225,7 @@
   <iframe src="https://siddheshk16.github.io/SurpriseForYouDipali.github.io/VN20250214_003245.mp4" allowfullscreen></iframe>
   <br/>
 </div>-->
-
+<p id="lastmessage" style="color: yellow; display: none;">"Everything - " <strong style="color: white"> becomes special when it's related to you..!</strong> </p>
 <video id="videoContainer1" controls playsinline style="display: none; width:90%; max-width:360px; aspect-ratio:3/4; border-radius:15px; box-shadow:0 4px 5px rgba(0,0,0,0.3);">
   <source src="https://siddheshk16.github.io/SurpriseForYouDipali.github.io/VN20250724_191918.mp4" type="video/mp4">
 </video>
@@ -271,6 +270,7 @@
     const btn1 = document.getElementById("revealBtn1");
     const btn2 = document.getElementById("revealBtn2");
     const video1 = document.getElementById("videoContainer1");
+    const lastmessage = document.getElementById("lastmessage");
     
 
     btn.addEventListener("click", () => {
@@ -278,7 +278,8 @@
       video.style.display = "none";
       btn.style.display = "none";
       video1.style.display="none";
-      launchConfetti();
+      msg.scrollIntoView({ behavior: "smooth" });
+      launchConfetti(); 
     });
 
     btn1.addEventListener("click", () => {
@@ -296,6 +297,7 @@
       btn.style.display = "none";
       video1.style.display="block";
       btn2.style.display="none";
+      lastmessage.style.display = "block";
       launchConfetti();
     });
 
