@@ -1,103 +1,193 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Birthday, My Love! ✨</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #ffd6e0, #ffb6c1);
+      height: 100%;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to top right, #fff0f5, #ffb6c1);
+      overflow: hidden;
+      text-align: center;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      height: 100vh;
-      text-align: center;
-      color: #fff;
+      align-items: center;
+      position: relative;
     }
+
     .heart {
-      font-size: 4em;
+      font-size: 5em;
       animation: beat 1s infinite;
+      margin-bottom: 15px;
+      color: #ff69b4;
     }
+
     @keyframes beat {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.3); }
     }
-    h1 {
-      font-size: 2.5em;
-      margin: 20px 0 10px;
+
+    h1, h2 {
+      font-family: 'Great Vibes', cursive;
+      color: #fff;
+      text-shadow: 2px 2px 4px #ff69b4;
     }
+
+    h1 {
+      font-size: 3em;
+      margin: 10px 0;
+    }
+
     h2 {
-      font-size: 2em;
+      font-size: 2.5em;
       margin-top: 20px;
     }
+
     p {
       font-size: 1.2em;
-      margin: 10px 20px;
+      margin: 15px;
+      color: #fff;
+      text-shadow: 1px 1px 2px #d63384;
     }
+
     #revealBtn {
-      background: #fff;
-      color: #ff4081;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      color: #fff;
       border: none;
-      padding: 12px 25px;
-      font-size: 1em;
-      border-radius: 20px;
+      padding: 14px 30px;
+      font-size: 1.1em;
+      border-radius: 30px;
       margin-top: 25px;
       cursor: pointer;
-      transition: 0.3s ease;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
     }
+
     #revealBtn:hover {
-      background: #ffebf0;
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #ff8ec4, #9893f5);
     }
+
     #message, #videoContainer {
       display: none;
-      animation: fadeIn 1.5s ease-in;
+      animation: fadeIn 1.5s ease-in forwards;
     }
+
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
+
     #photo {
-      width: 150px;
-      height: 150px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       object-fit: cover;
-      margin: 15px 0;
-      border: 3px solid #fff;
+      margin: 20px 0;
+      border: 4px solid #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
+
     iframe {
       border: none;
-      border-radius: 10px;
-      width: 300px;
-      height: 170px;
+      border-radius: 15px;
+      width: 320px;
+      height: 180px;
       margin-top: 20px;
+    }
+
+    .floating-heart {
+      position: absolute;
+      font-size: 2em;
+      color: #ff69b4;
+      animation: floatUp 6s infinite ease-in-out;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: 0;
+        opacity: 0;
+        transform: translateX(0);
+      }
+      50% {
+        opacity: 1;
+        transform: translateX(30px);
+      }
+      100% {
+        bottom: 100%;
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="heart">💕</div>
-  <h1>Loading love packets...</h1><button id="revealBtn">Tap for a Surprise 🏰</button>
+  <div class="heart animate__animated animate__bounceInDown">💕</div>
+  <h1 class="animate__animated animate__fadeInDown">Loading love packets...</h1>
+  <button id="revealBtn" class="animate__animated animate__pulse animate__infinite">Tap for a Surprise 🏰</button>
 
-  <div id="message">
-    <img id="photo" src="https://i.imgur.com/YOUR_IMAGE.jpg" alt="Her Photo">
-    <h2>Happy Birthday, Sneha! 🎈</h2>
-    <p>You are not just a part of my life code, you ARE the code.
-    <br>From the first compile to infinite loops of love — I’m yours forever.
-    <br><strong>I love you more than all my Git commits combined! ❤️</strong></p>
-  </div>  
-  
-  <div id="videoContainer">
-    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1" allow="aut"></iframe>
-  </div>  
+  <div id="message" class="animate__animated animate__fadeInUp">
+    <img id="photo" src="../New folder/images/IMG_20240714_145938.jpg" alt="Her Photo" />
+    <h2>Happy Birthday, Dipali! 🎈</h2>
+    <p>
+      You are not just a part of my life code, you ARE the code.<br>
+      From the first compile to infinite loops of love — I’m yours forever.<br>
+      <strong>I love you more than all my Git commits combined! ❤️</strong>
+    </p>
+  </div>
 
+  <div id="videoContainer" class="animate__animated animate__fadeInUp">
+    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1" allowfullscreen></iframe>
+  </div>
+
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating hearts -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.innerHTML = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 3 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+    setInterval(createHeart, 800);
+  </script>
+
+  <!-- Reveal Message Logic -->
   <script>
     const btn = document.getElementById("revealBtn");
     const msg = document.getElementById("message");
+    const video = document.getElementById("videoContainer");
 
     btn.addEventListener("click", () => {
       msg.style.display = "block";
+      video.style.display = "block";
       btn.style.display = "none";
     });
   </script>
+</body>
+</html>
